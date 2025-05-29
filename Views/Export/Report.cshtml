@@ -1,0 +1,29 @@
+@model List<ExcelPDF.Models.ReportModel>
+
+<h2>Laporan Data</h2>
+
+<table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Nama</th>
+            <th>Nilai</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Value</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br />
+
+<!-- Tombol Download PDF -->
+<a href="@Url.Action("DownloadPdf", "Export")" class="btn btn-primary">Download PDF</a>
+
+<!-- Tombol Download Excel -->
+<a href="@Url.Action("DownloadExcel", "Export")" class="btn btn-success">Download Excel</a>
