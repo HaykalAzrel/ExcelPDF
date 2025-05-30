@@ -1,7 +1,10 @@
+using ExcelPDF.Data;
 using Rotativa.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IReportRepository, ReportRepository>();
+
 var app = builder.Build();
 
 RotativaConfiguration.Setup(app.Environment.WebRootPath, "Rotativa");

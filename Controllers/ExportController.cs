@@ -1,5 +1,5 @@
+using ExcelPDF.Data;
 using Microsoft.AspNetCore.Mvc;
-using ExcelPDF.Models;
 using ClosedXML.Excel;
 using Rotativa.AspNetCore;
 
@@ -7,15 +7,22 @@ namespace ExcelPDF.Controllers;
 
 public class ExportController : Controller
 {
+    private readonly IReportRepository _repo;
+
+    public ExportController(IReportRepository repo)
+    {
+        _repo = repo;
+    }
+
     public IActionResult Index()
     {
-        var data = GetData();
+        var data = _repo.GetAllReports();
         return View("Report", data);
     }
 
     public IActionResult DownloadPdf()
     {
-        var data = GetData();
+        var data = _repo.GetAllReports();
         return new ViewAsPdf("Report", data)
         {
             FileName = "Laporan-PDF.pdf"
@@ -24,7 +31,7 @@ public class ExportController : Controller
 
     public IActionResult DownloadExcel()
     {
-        var data = GetData();
+        var data = _repo.GetAllReports();
         using var workbook = new XLWorkbook();
         var worksheet = workbook.Worksheets.Add("Laporan");
 
@@ -45,11 +52,4 @@ public class ExportController : Controller
             "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
             "Laporan-Excel.xlsx");
     }
-
-    private List<ReportModel> GetData() => new()
-    {
-        new ReportModel { Name = "Item A", Value = 100 },
-        new ReportModel { Name = "Item B", Value = 200 },
-        new ReportModel { Name = "Item C", Value = 300 }
-    };
 }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ExcelPDF")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+19a345ff027a7805ff613eb1a3e1b4c9806ae99b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be6e94927fbd6dfbfad68f57eb61c0ad53994e41")]
 [assembly: System.Reflection.AssemblyProductAttribute("ExcelPDF")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ExcelPDF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
